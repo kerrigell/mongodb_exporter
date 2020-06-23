@@ -123,3 +123,26 @@ As a general rule of thumb, please try to create bug reports that are:
 - *Specific.* Include as much detail as possible: which version, what environment, etc.
 - *Unique.* Do not duplicate existing tickets.
 - *Scoped to a Single Bug.* One bug per report.
+
+# mongodb_exporter 多实例收集改造记录
+>  最新版的 exporter 引入 go.mongodb.org/mongo-driver， 无法连接低于 2.6 版本的 mongo ，改造基于 tag [v0.7.1](https://github.com/percona/mongodb_exporter/tree/v0.7.1) 
+1. 使用 go mod 做包管理，删除 vendor 文件件
+2. 改造 mongodb_exporter.go 增加 metrics 接口支持接收参数
+3. 修复多实例收集时， 一些 metric 包含历史数据问题，解决方法调用 MetricVec.reset() 
+4. 命令行增加 config.mongodb-cnf 选项，提供记录鉴权信息的 ini 文件，格式仿照 MySQL client conf
+
+# 接口说明
+```javascript
+GET /metrics?address=<mongodb_ip_address>:<mongodb_port>[&auth=true]
+```
+* address: mongodb 实例地址，由ip和端口组成
+* auth: 可选参数，默认值 true。当访问开鉴权实例时使用，账号信息是从 mongodb-cnf 的配置文件解析获得
+
+# mongodb-cnf 格式
+```bash
+[client]
+user=mgo-user
+password=mgo-password
+```
+
+
