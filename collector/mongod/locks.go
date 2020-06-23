@@ -59,6 +59,9 @@ type LockStats struct {
 
 // Export exports the data to prometheus.
 func (locks LockStatsMap) Export(ch chan<- prometheus.Metric) {
+	locksTimeLockedGlobalMicrosecondsTotal.Reset()
+	locksTimeLockedLocalMicrosecondsTotal.Reset()
+	locksTimeAcquiringGlobalMicrosecondsTotal.Reset()
 	for key, locks := range locks {
 		if key == "." {
 			key = "dot"

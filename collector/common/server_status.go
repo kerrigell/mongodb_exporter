@@ -64,6 +64,7 @@ type ServerStatus struct {
 
 // Export exports the server status to be consumed by prometheus.
 func (status *ServerStatus) Export(ch chan<- prometheus.Metric) {
+	versionInfo.Reset()
 	versionInfo.WithLabelValues(status.Version).Set(1)
 	instanceUptimeSeconds.Set(status.Uptime)
 	instanceUptimeEstimateSeconds.Set(status.Uptime)

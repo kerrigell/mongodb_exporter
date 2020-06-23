@@ -57,6 +57,11 @@ type DatabaseStatus struct {
 
 // Export exports database stats to prometheus
 func (dbStatList *DatabaseStatList) Export(ch chan<- prometheus.Metric) {
+	indexSize.Reset()
+	dataSize.Reset()
+	collectionsTotal.Reset()
+	indexesTotal.Reset()
+	objectsTotal.Reset()
 	for _, member := range dbStatList.Members {
 		ls := prometheus.Labels{"db": member.Name}
 		indexSize.With(ls).Set(float64(member.IndexSize))

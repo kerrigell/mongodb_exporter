@@ -179,6 +179,7 @@ func (replStatus *ReplSetStatus) Export(ch chan<- prometheus.Metric) {
 	memberLastHeartbeatRecv.Reset()
 	memberPingMs.Reset()
 	memberConfigVersion.Reset()
+	date.Reset()
 
 	myState.WithLabelValues(replStatus.Set).Set(float64(replStatus.MyState))
 	date.WithLabelValues(replStatus.Set).Set(float64(replStatus.Date.Unix()))

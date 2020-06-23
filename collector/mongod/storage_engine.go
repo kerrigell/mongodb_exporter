@@ -33,6 +33,7 @@ type StorageEngineStats struct {
 
 // Export exports the data to prometheus.
 func (stats *StorageEngineStats) Export(ch chan<- prometheus.Metric) {
+	storageEngine.Reset()
 	storageEngine.WithLabelValues(stats.Name).Set(1)
 	storageEngine.Collect(ch)
 }
