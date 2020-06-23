@@ -1,5 +1,7 @@
 module github.com/percona/mongodb_exporter
 
+go 1.14
+
 require (
 	github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc // indirect
 	github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf // indirect
@@ -10,6 +12,7 @@ require (
 	github.com/onsi/ginkgo v1.7.0 // indirect
 	github.com/onsi/gomega v1.4.3 // indirect
 	github.com/percona/exporter_shared v0.0.0-20180321061342-7d9e9cc0256a
+	github.com/percona/pmm v2.7.0+incompatible
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/prometheus/client_golang v0.8.0
 	github.com/prometheus/client_model v0.0.0-20171117100541-99fa1f4be8e5 // indirect
@@ -23,5 +26,6 @@ require (
 	gopkg.in/airbrake/gobrake.v2 v2.0.9 // indirect
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 	gopkg.in/gemnasium/logrus-airbrake-hook.v2 v2.1.2 // indirect
+	gopkg.in/ini.v1 v1.57.0
 	gopkg.in/mgo.v2 v2.0.0-20160818020120-3f83fa500528
 )
