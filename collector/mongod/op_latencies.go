@@ -72,6 +72,9 @@ type OpLatenciesStat struct {
 
 // Export exports metrics to Prometheus
 func (stat *OpLatenciesStat) Export(ch chan<- prometheus.Metric) {
+	opLatenciesTotal.Reset()
+	opLatenciesCountTotal.Reset()
+	opLatenciesHistogram.Reset()
 	if stat.Reads != nil {
 		stat.Reads.Update("read")
 	}
