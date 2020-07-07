@@ -124,6 +124,8 @@ As a general rule of thumb, please try to create bug reports that are:
 - *Unique.* Do not duplicate existing tickets.
 - *Scoped to a Single Bug.* One bug per report.
 
+> 基于 percona mongodb exporter 增加一对多实例监控数据收集
+
 # mongodb_exporter 多实例收集改造记录
 >  最新版的 exporter 引入 go.mongodb.org/mongo-driver， 无法连接低于 2.6 版本的 mongo ，改造基于 tag [v0.7.1](https://github.com/percona/mongodb_exporter/tree/v0.7.1) 
 1. 使用 go mod 做包管理，删除 vendor 文件件
